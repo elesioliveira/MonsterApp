@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:monster_app/componentes/todos.dart';
 
-import '../../componentes/componentes.dart';
-import '../../controller/controller.dart';
+import '../../../../componentes/componentes.dart';
+import '../../../../controller/controller.dart';
 import 'homem/ativoFisico/atividadeFisica/tipo_ativo_page.dart';
 
 class SecondAsk extends StatefulWidget {
@@ -25,20 +26,6 @@ class _SecondAskState extends State<SecondAsk> {
           key: homemPageController.formKey,
           child: Column(
             children: [
-              //headbar
-              Container(
-                width: double.infinity,
-                height: 30,
-                decoration: const BoxDecoration(
-                  color: Color.fromARGB(197, 38, 173, 58),
-                  borderRadius: BorderRadius.only(
-                    bottomLeft: Radius.circular(80),
-                    bottomRight: Radius.circular(80),
-                  ),
-                ),
-                child: const Center(child: Text('ETAPA 2')),
-              ),
-
               Padding(
                 padding: const EdgeInsets.only(top: 80),
                 child: EntradaTexto(
@@ -47,12 +34,7 @@ class _SecondAskState extends State<SecondAsk> {
                     MaskTextFormField.peso
                   ],
                   validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Campo obrigatório';
-                    } else if (value.length >= 6) {
-                      return 'Digite seu peso correto';
-                    }
-                    return null;
+                    return peso(value);
                   },
                   controller: homemPageController.pesoTextEditController,
                   texto: 'Qual seu peso?',
@@ -66,12 +48,7 @@ class _SecondAskState extends State<SecondAsk> {
                   MaskTextFormField.altura,
                 ],
                 validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Campo obrigatório';
-                  } else if (value.length >= 5) {
-                    return 'Digite sua altura certa';
-                  }
-                  return null;
+                  return altura(value);
                 },
                 controller: homemPageController.alturaTextEditController,
                 texto: 'Qual sua altura?',
@@ -80,13 +57,7 @@ class _SecondAskState extends State<SecondAsk> {
               ),
               EntradaTexto(
                 validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Campo obrigatório';
-                  }
-                  if (value.length >= 3) {
-                    return 'Digite sua idade correta';
-                  }
-                  return null;
+                  return idade(value);
                 },
                 inputFormatters: [
                   FilteringTextInputFormatter.digitsOnly,
@@ -106,8 +77,8 @@ class _SecondAskState extends State<SecondAsk> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    Bottom(
-                      textoButtom: 'Voltar',
+                    BottomNegativo(
+                      textoButtom: 'VOLTAR',
                       onPressed: () {
                         Navigator.pop(context); // Volta para a página anterior
                       },
@@ -115,8 +86,8 @@ class _SecondAskState extends State<SecondAsk> {
                     const SizedBox(
                       width: 10,
                     ),
-                    Bottom(
-                      textoButtom: 'Salvar',
+                    BottomPositivo(
+                      textoButtom: 'SALVAR',
                       onPressed: () {
                         homemPageController.focusScopeNode.unfocus();
                         if (homemPageController.formKey.currentState!
@@ -128,6 +99,16 @@ class _SecondAskState extends State<SecondAsk> {
                             context,
                             MaterialPageRoute(
                               builder: (context) => TipoAtivo(
+                                gorduraDiariaExtremamente:
+                                    homemPageController.gorduraExtremamente,
+                                gorduraDiariaLevemente:
+                                    homemPageController.gorduraLevementeAtivo,
+                                gorduraDiariaModeradamente:
+                                    homemPageController.gorduraModeradamente,
+                                gorduraDiariaMuito:
+                                    homemPageController.gorduraMuito,
+                                gorduraDiariaSedentario:
+                                    homemPageController.gorduraSendentario,
                                 carboMax: homemPageController.carboMax,
                                 carboMin: homemPageController.carboMin,
                                 proteinasMin: homemPageController.proteinasMin,

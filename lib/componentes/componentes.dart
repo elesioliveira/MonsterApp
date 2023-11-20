@@ -54,14 +54,11 @@ abstract class ColorPalette {
   static const Color quinta = Color(0XFF01542D);
   static const Color quarta = Color(0xFF1D852D);
   static const Color secundaria = Color(0xFF26AD3A);
-
-  static const Color grafico1 = Color(0xff5C1705);
-  static const Color grafico2 = Color(0xff852207);
-  static const Color grafico3 = Color(0xffAD2C09);
+  static const Color gordura = Color(0xFF3e4700);
 }
 
-class Bottom extends StatelessWidget {
-  Bottom({super.key, this.onPressed, required this.textoButtom});
+class BottomPositivo extends StatelessWidget {
+  BottomPositivo({super.key, this.onPressed, required this.textoButtom});
   void Function()? onPressed;
   late final String textoButtom;
 
@@ -103,6 +100,49 @@ class Bottom extends StatelessWidget {
   }
 }
 
+class BottomNegativo extends StatelessWidget {
+  BottomNegativo({super.key, this.onPressed, required this.textoButtom});
+  void Function()? onPressed;
+  late final String textoButtom;
+
+  @override
+  Widget build(BuildContext context) {
+    return ElevatedButton(
+      style: ButtonStyle(
+        elevation: MaterialStateProperty.all<double>(10),
+        shadowColor: MaterialStateProperty.resolveWith<Color?>(
+            (Set<MaterialState> states) {
+          if (states.contains(MaterialState.pressed)) {
+            // Cor da sombra quando o botão é pressionado
+            return Colors.green;
+          }
+          // Cor da sombra em outros estados
+          return Colors.blue;
+        }),
+        backgroundColor: MaterialStateProperty.resolveWith<Color?>(
+          (Set<MaterialState> states) {
+            if (states.contains(MaterialState.disabled)) {
+              // Cor de fundo quando o botão está desativado
+              return Colors.white; // Cor desejada
+            }
+            if (states.contains(MaterialState.pressed)) {
+              // Cor de fundo quando o botão está pressionado
+              return null; // Cor desejada
+            }
+            // Cor de fundo padrão
+            return Colors.white; // Cor desejada
+          },
+        ),
+      ),
+      onPressed: onPressed,
+      child: Text(
+        textoButtom,
+        style: const TextStyle(color: ColorPalette.primaria),
+      ),
+    );
+  }
+}
+
 class EntradaTexto extends StatefulWidget {
   EntradaTexto(
       {super.key,
@@ -131,18 +171,7 @@ class _EntradaTextoState extends State<EntradaTexto> {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(top: 10, left: 10, right: 10),
-      child: Container(
-        decoration: BoxDecoration(
-            boxShadow: [
-              BoxShadow(
-                color: Colors.black.withOpacity(0.3),
-                spreadRadius: 2,
-                blurRadius: 7,
-                offset: const Offset(0, 3),
-              ),
-            ],
-            color: const Color.fromARGB(166, 248, 246, 246),
-            borderRadius: BorderRadius.circular(10)),
+      child: SizedBox(
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Expanded(
@@ -165,14 +194,7 @@ class _EntradaTextoState extends State<EntradaTexto> {
                     return TextFormField(
                       validator: widget.validator,
                       onSaved: widget.onSaved,
-                      inputFormatters: widget.inputFormatters
-
-                      /*[
-                        FilteringTextInputFormatter
-                            .digitsOnly, // Permite apenas dígitos numéricos
-                            MaskTextFormField.peso
-                      ], */
-                      ,
+                      inputFormatters: widget.inputFormatters,
                       onChanged: (value) {
                         removeEmailVisibilityNotifier.value = value.isEmpty;
                       },
@@ -224,6 +246,6 @@ abstract class MaskTextFormField {
 class ChartData {
   ChartData(this.category, this.value, this.color);
   final String category;
-  final double value;
+  final int value;
   final Color color;
 }

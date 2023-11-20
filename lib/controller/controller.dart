@@ -63,4 +63,24 @@ class HomemPageController extends ChangeNotifier {
   double get carboMax {
     return peso * 7;
   }
+
+  double get gorduraSendentario {
+    return tbmSedentario * 0.35;
+  }
+
+  double get gorduraLevementeAtivo {
+    return tbmLevementeAtivo * 0.35;
+  }
+
+  double get gorduraModeradamente {
+    return tbmModeradamenteAtivo * 0.35;
+  }
+
+  double get gorduraMuito {
+    return tbmMuitoAtivo * 0.35;
+  }
+
+  double get gorduraExtremamente {
+    return tbmExtremamenteAtivo * 0.35;
+  }
 }

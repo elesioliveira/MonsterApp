@@ -20,6 +20,11 @@ class TipoAtivo extends StatelessWidget {
   final double proteinasMax;
   final double carboMin;
   final double carboMax;
+  final double? gorduraDiariaSedentario;
+  final double? gorduraDiariaLevemente;
+  final double? gorduraDiariaModeradamente;
+  final double? gorduraDiariaMuito;
+  final double? gorduraDiariaExtremamente;
 
   const TipoAtivo({
     super.key,
@@ -34,6 +39,11 @@ class TipoAtivo extends StatelessWidget {
     required this.proteinasMax,
     required this.carboMin,
     required this.carboMax,
+    this.gorduraDiariaSedentario,
+    this.gorduraDiariaLevemente,
+    this.gorduraDiariaModeradamente,
+    this.gorduraDiariaMuito,
+    this.gorduraDiariaExtremamente,
   }); // Construtor que recebe o valor
 
   @override
@@ -43,20 +53,15 @@ class TipoAtivo extends StatelessWidget {
         children: [
           Container(
             width: double.infinity,
-            height: 60,
+            height: 30,
             decoration: const BoxDecoration(
-              color: Colors.black12,
+              color: Color.fromARGB(197, 38, 173, 58),
               borderRadius: BorderRadius.only(
                 bottomLeft: Radius.circular(80),
                 bottomRight: Radius.circular(80),
               ),
             ),
-            child: const Center(
-              child: Text(
-                'Etapa 2 - RESULTADO',
-                style: TextStyle(fontWeight: FontWeight.bold),
-              ),
-            ),
+            child: const Center(child: Text('ETAPA 3')),
           ),
           Center(
             child: Column(
@@ -70,6 +75,7 @@ class TipoAtivo extends StatelessWidget {
                         context,
                         MaterialPageRoute(
                           builder: (context) => SedentarioPage(
+                            gorduraDiaria: gorduraDiariaLevemente!,
                             carboMin: carboMin,
                             carboMax: carboMax,
                             proteinasMax: proteinasMax,
@@ -94,6 +100,7 @@ class TipoAtivo extends StatelessWidget {
                         context,
                         MaterialPageRoute(
                           builder: (context) => LevementePage(
+                            gorduraDiaria: gorduraDiariaLevemente!,
                             carboMin: carboMin,
                             carboMax: carboMax,
                             proteinasMax: proteinasMax,
@@ -118,6 +125,7 @@ class TipoAtivo extends StatelessWidget {
                         context,
                         MaterialPageRoute(
                           builder: (context) => ModeradamentePage(
+                            gorduraDiaria: gorduraDiariaModeradamente!,
                             carboMin: carboMin,
                             carboMax: carboMax,
                             proteinasMax: proteinasMax,
@@ -142,6 +150,7 @@ class TipoAtivo extends StatelessWidget {
                         context,
                         MaterialPageRoute(
                           builder: (context) => MuitoPage(
+                            gorduraDiaria: gorduraDiariaMuito!,
                             carboMin: carboMin,
                             carboMax: carboMax,
                             proteinasMax: proteinasMax,
@@ -166,6 +175,7 @@ class TipoAtivo extends StatelessWidget {
                         context,
                         MaterialPageRoute(
                           builder: (context) => ExtremamentePage(
+                            gorduraDiaria: gorduraDiariaExtremamente!,
                             carboMin: carboMin,
                             carboMax: carboMax,
                             proteinasMax: proteinasMax,

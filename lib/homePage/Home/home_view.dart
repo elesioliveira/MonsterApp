@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../primaryAsk/primary_ask_page.dart';
+import 'primaryAsk/primary_ask_page.dart';
 import '../../componentes/componentes.dart';
 import '../cubits/todo_cubits.dart';
 import '../cubits/todo_states.dart';
@@ -29,15 +29,14 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Stack(
         children: [
           Positioned(
-            left: 0,
-            right: 0,
+            width: MediaQuery.of(context).size.width,
             top: 20,
             child: Image.asset('assets/monster.png'),
           ),
-          const Positioned(
-              bottom: 0,
-              child: Padding(
-                padding: EdgeInsets.only(bottom: 40, right: 10, left: 10),
+          Positioned(
+              width: MediaQuery.of(context).size.width,
+              bottom: 15,
+              child: const Center(
                 child: Text(
                   'Seu aplicativo para calcular o ganho e perca de peso',
                   style: TextStyle(
@@ -47,14 +46,13 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
               )),
           Center(
-            child: Container(
-              padding: const EdgeInsets.only(left: 15, right: 15),
-              width: double.infinity,
+            child: SizedBox(
+              width: 200,
               child: BlocBuilder(
                 bloc: cubit,
                 builder: (context, state) {
                   if (state is InitialTodoState) {
-                    return Bottom(
+                    return BottomPositivo(
                       onPressed: () async {
                         await cubit.funcTodo();
                         Navigator.of(context).push(

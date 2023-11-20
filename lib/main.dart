@@ -5,7 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'bindings/bindings.dart';
 import 'componentes/componentes.dart';
 
-import 'homePage/pageView/home_view.dart';
+import 'homePage/Home/home_view.dart';
 
 void main() {
   debugPaintSizeEnabled = false; // Ativar debug painting de tamanhos

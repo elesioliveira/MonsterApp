@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'package:monster_app/primaryAsk/cubits/todo_states.dart';
+import 'package:monster_app/homePage/Home/primaryAsk/cubits/todo_states.dart';
 
 import 'secondAsk/second_ask_view.dart';
 import 'cubits/todo_cubits.dart';
@@ -102,7 +102,7 @@ class _PrimaryAskState extends State<PrimaryAsk> {
                 child: Padding(
                   padding: EdgeInsets.all(8.0),
                   child: Text(
-                    'Biologicamente voce é Homem ou Mulher?',
+                    'Voce é \nHomem ou Mulher?',
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
