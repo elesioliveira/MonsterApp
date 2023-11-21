@@ -2,11 +2,11 @@ import 'dart:core';
 
 import 'package:flutter/material.dart';
 
-import 'resultado/extremamente/extremamente.dart';
-import 'resultado/levemente/levemente.dart';
-import 'resultado/moderadamente/moderadamente.dart';
-import 'resultado/muito/muito.dart';
-import 'resultado/sedentario/sendentario_page.dart';
+import '../resultado/extremamente/extremamente.dart';
+import '../resultado/levemente/levemente.dart';
+import '../resultado/moderadamente/moderadamente.dart';
+import '../resultado/muito/muito.dart';
+import '../resultado/sedentario/sendentario_page.dart';
 
 class TipoAtivo extends StatelessWidget {
   final double tbm;
@@ -51,18 +51,6 @@ class TipoAtivo extends StatelessWidget {
     return Scaffold(
       body: Stack(
         children: [
-          Container(
-            width: double.infinity,
-            height: 30,
-            decoration: const BoxDecoration(
-              color: Color.fromARGB(197, 38, 173, 58),
-              borderRadius: BorderRadius.only(
-                bottomLeft: Radius.circular(80),
-                bottomRight: Radius.circular(80),
-              ),
-            ),
-            child: const Center(child: Text('ETAPA 3')),
-          ),
           Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,

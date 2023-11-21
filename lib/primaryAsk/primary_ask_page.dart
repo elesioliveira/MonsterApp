@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:monster_app/identity/identity.dart';
 
-import 'package:monster_app/homePage/Home/primaryAsk/cubits/todo_states.dart';
+import 'package:monster_app/primaryAsk/cubits/todo_states.dart';
 
-import 'secondAsk/second_ask_view.dart';
+import '../secondAsk/second_ask_view.dart';
 import 'cubits/todo_cubits.dart';
 
 class PrimaryAsk extends StatefulWidget {
@@ -16,6 +17,7 @@ class PrimaryAsk extends StatefulWidget {
 class _PrimaryAskState extends State<PrimaryAsk> {
   late final PrimaryAskCubit cubit;
   final desativarButton = ValueNotifier(false);
+  HomemPageController tipoGenero = HomemPageController();
 
   @override
   void initState() {
@@ -131,7 +133,8 @@ class _PrimaryAskState extends State<PrimaryAsk> {
                             desativarButton.value = !desativarButton.value;
                             Navigator.of(context).push(
                               MaterialPageRoute(
-                                builder: (context) => const SecondAsk(),
+                                builder: (context) =>
+                                    const SecondAsk(homem: true),
                               ),
                             );
                           },
@@ -157,13 +160,15 @@ class _PrimaryAskState extends State<PrimaryAsk> {
                           : () async {
                               desativarButton.value = !desativarButton.value;
                               await cubit.primaryAsk();
+
                               await Future.delayed(
                                 const Duration(seconds: 2),
                               );
                               desativarButton.value = !desativarButton.value;
                               Navigator.of(context).push(
                                 MaterialPageRoute(
-                                  builder: (context) => const SecondAsk(),
+                                  builder: (context) =>
+                                      const SecondAsk(homem: false),
                                 ),
                               );
                             },

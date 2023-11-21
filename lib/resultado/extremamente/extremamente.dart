@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:monster_app/componentes/grafico.dart';
 
-import '../../../../../../../../../componentes/tipo_ativo_descricao.dart';
+import '../../componentes/tipo_ativo_descricao.dart';
 
 class ExtremamentePage extends StatelessWidget {
   final double tbm;

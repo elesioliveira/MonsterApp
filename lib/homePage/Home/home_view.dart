@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'primaryAsk/primary_ask_page.dart';
+import '../../primaryAsk/primary_ask_page.dart';
 import '../../componentes/componentes.dart';
 import '../cubits/todo_cubits.dart';
 import '../cubits/todo_states.dart';

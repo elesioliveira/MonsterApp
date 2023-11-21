@@ -3,7 +3,7 @@ import 'package:monster_app/componentes/componentes.dart';
 import 'package:monster_app/componentes/tipo_ativo_descricao.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
-import '../../../../../../../../../componentes/grafico.dart';
+import '../../componentes/grafico.dart';
 
 class ModeradamentePage extends StatelessWidget {
   final double tbm;

@@ -166,7 +166,7 @@ class EntradaTexto extends StatefulWidget {
 }
 
 class _EntradaTextoState extends State<EntradaTexto> {
-  final removeEmailVisibilityNotifier = ValueNotifier(true);
+  final ValueNotifier<bool> removeEmailVisibilityNotifier = ValueNotifier(true);
   @override
   Widget build(BuildContext context) {
     return Padding(

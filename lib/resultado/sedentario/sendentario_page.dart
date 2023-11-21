@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:monster_app/componentes/componentes.dart';
+import 'package:monster_app/componentes/tipo_ativo_descricao.dart';
+import 'package:syncfusion_flutter_charts/charts.dart';
 
-import '../../../../../../../../../componentes/grafico.dart';
-import '../../../../../../../../../componentes/tipo_ativo_descricao.dart';
+import '../../componentes/grafico.dart';
 
-class LevementePage extends StatelessWidget {
+class SedentarioPage extends StatelessWidget {
   final double tbm;
   final double peso;
   final String tipoAtivo;
@@ -12,7 +14,7 @@ class LevementePage extends StatelessWidget {
   final double carboMin;
   final double carboMax;
   final double gorduraDiaria;
-  const LevementePage({
+  const SedentarioPage({
     super.key,
     required this.tbm,
     required this.peso,
@@ -35,18 +37,19 @@ class LevementePage extends StatelessWidget {
     int metaDiariaGordura = gorduraDiaria.toInt();
 
     return Scaffold(
+      // backgroundColor: Color.fromARGB(58, 20, 92, 31),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const SizedBox(
               height: 10,
             ),
             const TipoAtivoResultado(
-                title: 'O QUE É SERIA UMA PESSOA LEVEMENTE ATIVA?',
-                body:
-                    'Uma pessoa levemente ativa é aquela que se envolve regularmente em atividades físicas, mas em níveis moderados ou leves. Isso pode incluir exercícios suaves, como caminhadas regulares, ciclismo leve ou atividades recreativas.'),
+              title: 'O QUE É SERIA UMA PESSOA SEDENTARIA?',
+              body:
+                  'Uma pessoa sedentária é aquela que tem um estilo de vida caracterizado pela falta de atividade física regular. Isso envolve passar a maior parte do tempo sentada e participar de poucas ou nenhum exercício.',
+            ),
             const SizedBox(
               height: 10,
             ),

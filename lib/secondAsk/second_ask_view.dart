@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:monster_app/componentes/todos.dart';
+import 'package:monster_app/componentes/validador.dart';
 
-import '../../../../componentes/componentes.dart';
-import '../../../../controller/controller.dart';
-import 'homem/ativoFisico/atividadeFisica/tipo_ativo_page.dart';
+import '../componentes/componentes.dart';
+import '../identity/identity.dart';
+import '../AtividadeFisica/tipo_ativo_page.dart';
 
 class SecondAsk extends StatefulWidget {
-  const SecondAsk({
-    super.key,
-  });
+  const SecondAsk({super.key, required this.homem});
+  final bool homem;
 
   @override
   State<SecondAsk> createState() => _SecondAskState();
@@ -34,7 +33,7 @@ class _SecondAskState extends State<SecondAsk> {
                     MaskTextFormField.peso
                   ],
                   validator: (value) {
-                    return peso(value);
+                    return pesoValidator(value);
                   },
                   controller: homemPageController.pesoTextEditController,
                   texto: 'Qual seu peso?',
@@ -48,7 +47,7 @@ class _SecondAskState extends State<SecondAsk> {
                   MaskTextFormField.altura,
                 ],
                 validator: (value) {
-                  return altura(value);
+                  return alturaValidator(value);
                 },
                 controller: homemPageController.alturaTextEditController,
                 texto: 'Qual sua altura?',
@@ -57,7 +56,7 @@ class _SecondAskState extends State<SecondAsk> {
               ),
               EntradaTexto(
                 validator: (value) {
-                  return idade(value);
+                  return idadeValidator(value);
                 },
                 inputFormatters: [
                   FilteringTextInputFormatter.digitsOnly,
@@ -89,6 +88,7 @@ class _SecondAskState extends State<SecondAsk> {
                     BottomPositivo(
                       textoButtom: 'SALVAR',
                       onPressed: () {
+                        homemPageController.setGenero(widget.homem);
                         homemPageController.focusScopeNode.unfocus();
                         if (homemPageController.formKey.currentState!
                             .validate()) {

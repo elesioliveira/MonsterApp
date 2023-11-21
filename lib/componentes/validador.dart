@@ -1,4 +1,4 @@
-peso(value) {
+pesoValidator(value) {
   if (value == null || value.isEmpty) {
     return 'Campo obrigatório';
   } else if (value.length >= 6) {
@@ -7,7 +7,7 @@ peso(value) {
   return null;
 }
 
-altura(value) {
+alturaValidator(value) {
   if (value == null || value.isEmpty) {
     return 'Campo obrigatório';
   } else if (value.length >= 5) {
@@ -16,7 +16,7 @@ altura(value) {
   return null;
 }
 
-idade(value) {
+idadeValidator(value) {
   if (value == null || value.isEmpty) {
     return 'Campo obrigatório';
   }
